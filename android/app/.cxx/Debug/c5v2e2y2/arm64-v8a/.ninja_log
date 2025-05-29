@@ -1,0 +1,10 @@
+# ninja log v5
+1	19	0	C:/Users/USER/Desktop/didim/crewbe-interview-android/android/app/.cxx/Debug/c5v2e2y2/arm64-v8a/CMakeFiles/cmake.verify_globs	1b8792de97ec0465
+34	282	7701868108831974	build.ninja	db08daf2b5496afa
+10	1384	7701867897085620	CMakeFiles/appmodules.dir/C_/Users/USER/Desktop/didim/crewbe-interview-android/android/app/build/generated/rncli/src/main/jni/rncli.cpp.o	faa4628ad95308fe
+5	1724	7701867900528606	CMakeFiles/appmodules.dir/OnLoad.cpp.o	9c2e379fe2d9531
+1724	1853	7701867901821657	C:/Users/USER/Desktop/didim/crewbe-interview-android/android/app/build/intermediates/cxx/Debug/c5v2e2y2/obj/arm64-v8a/libappmodules.so	9f5602c106795609
+1	23	0	C:/Users/USER/Desktop/didim/crewbe-interview-android/android/app/.cxx/Debug/c5v2e2y2/arm64-v8a/CMakeFiles/cmake.verify_globs	1b8792de97ec0465
+7	1551	7701868127394981	CMakeFiles/appmodules.dir/C_/Users/USER/Desktop/didim/crewbe-interview-android/android/app/build/generated/rncli/src/main/jni/rncli.cpp.o	faa4628ad95308fe
+4	1862	7701868130508605	CMakeFiles/appmodules.dir/OnLoad.cpp.o	9c2e379fe2d9531
+1862	2048	7701868132345786	C:/Users/USER/Desktop/didim/crewbe-interview-android/android/app/build/intermediates/cxx/Debug/c5v2e2y2/obj/arm64-v8a/libappmodules.so	9f5602c106795609
