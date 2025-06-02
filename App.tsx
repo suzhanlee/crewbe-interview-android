@@ -2,8 +2,14 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+<<<<<<< HEAD
 import { Text } from 'react-native';
 
+=======
+import { StatusBar } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { COLORS } from './src/constants';
+>>>>>>> 122eaf797253677b196dc157cff472f7f03d22cb
 import { RootStackParamList, MainTabParamList } from './src/types/navigation';
 import { ScheduleProvider } from './src/contexts/ScheduleContext';
 import { UserProvider } from './src/contexts/UserContext';
