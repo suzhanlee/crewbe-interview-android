@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.crewbeinterview.app-mergeDebugResources-23:/values-es-rES/values-es-rES.xml",
+            "outputFile": "com.crewbeinterview.app-mergeDebugResources-31:/values-es-rES/values-es-rES.xml",
             "map": [
                 {
                     "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\5b789ef7ea45c686446e5c33060c2106\\transformed\\react-android-0.73.6-debug\\res\\values-es-rES\\values-es-rES.xml",

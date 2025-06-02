@@ -1,3 +1,0 @@
-C:/Users/USER/Desktop/didim/crewbe-interview-android/android/app/.cxx/Debug/c5v2e2y2/x86/CMakeFiles/appmodules.dir
-C:/Users/USER/Desktop/didim/crewbe-interview-android/android/app/.cxx/Debug/c5v2e2y2/x86/CMakeFiles/edit_cache.dir
-C:/Users/USER/Desktop/didim/crewbe-interview-android/android/app/.cxx/Debug/c5v2e2y2/x86/CMakeFiles/rebuild_cache.dir

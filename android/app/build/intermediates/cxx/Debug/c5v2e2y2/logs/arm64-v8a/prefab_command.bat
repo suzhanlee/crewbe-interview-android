@@ -16,7 +16,7 @@
   --ndk-version ^
   25 ^
   --output ^
-  "C:\\Users\\USER\\AppData\\Local\\Temp\\agp-prefab-staging10744811992946366630\\staged-cli-output" ^
+  "C:\\Users\\USER\\AppData\\Local\\Temp\\agp-prefab-staging10368883922765608028\\staged-cli-output" ^
   "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\5b789ef7ea45c686446e5c33060c2106\\transformed\\react-android-0.73.6-debug\\prefab" ^
   "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\d4c4bf10f667029bf1e5f957a4033a7f\\transformed\\fbjni-0.5.1\\prefab" ^
   "C:\\Users\\USER\\.gradle\\caches\\transforms-3\\7dfa46b8761dd3e028be6619af127af6\\transformed\\hermes-android-0.73.6-debug\\prefab"

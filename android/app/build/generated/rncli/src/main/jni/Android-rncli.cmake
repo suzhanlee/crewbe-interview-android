@@ -3,8 +3,10 @@
 cmake_minimum_required(VERSION 3.13)
 set(CMAKE_VERBOSE_MAKEFILE on)
 
-
+add_subdirectory(C:/Users/USER/Desktop/didim/crewbe-interview-android/node_modules/react-native-safe-area-context/android/src/main/jni/ safeareacontext_autolinked_build)
+add_subdirectory(C:/Users/USER/Desktop/didim/crewbe-interview-android/node_modules/react-native-screens/android/src/main/jni/ rnscreens_autolinked_build)
 
 set(AUTOLINKED_LIBRARIES
-  
+  react_codegen_safeareacontext
+  react_codegen_rnscreens
 )

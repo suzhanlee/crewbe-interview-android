@@ -27,7 +27,7 @@
   },
   {
     "level_": 0,
-    "message_": "- a file changed",
+    "message_": "- no fingerprint file, will remove stale configuration folder",
     "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
     "tag_": "debug|arm64-v8a",
     "diagnosticCode_": 0,
@@ -40,7 +40,7 @@
   },
   {
     "level_": 0,
-    "message_": "  - C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\.cxx\\Debug\\c5v2e2y2\\arm64-v8a\\build.ninja (LAST_MODIFIED_CHANGED)",
+    "message_": "@echo off\n\"C:\\\\Users\\\\USER\\\\Downloads\\\\jdk-17\\\\bin\\\\java\" ^\n  --class-path ^\n  \"C:\\\\Users\\\\USER\\\\.gradle\\\\caches\\\\modules-2\\\\files-2.1\\\\com.google.prefab\\\\cli\\\\2.0.0\\\\f2702b5ca13df54e3ca92f29d6b403fb6285d8df\\\\cli-2.0.0-all.jar\" ^\n  com.google.prefab.cli.AppKt ^\n  --build-system ^\n  cmake ^\n  --platform ^\n  android ^\n  --abi ^\n  arm64-v8a ^\n  --os-version ^\n  21 ^\n  --stl ^\n  c++_shared ^\n  --ndk-version ^\n  25 ^\n  --output ^\n  \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\agp-prefab-staging10368883922765608028\\\\staged-cli-output\" ^\n  \"C:\\\\Users\\\\USER\\\\.gradle\\\\caches\\\\transforms-3\\\\5b789ef7ea45c686446e5c33060c2106\\\\transformed\\\\react-android-0.73.6-debug\\\\prefab\" ^\n  \"C:\\\\Users\\\\USER\\\\.gradle\\\\caches\\\\transforms-3\\\\d4c4bf10f667029bf1e5f957a4033a7f\\\\transformed\\\\fbjni-0.5.1\\\\prefab\" ^\n  \"C:\\\\Users\\\\USER\\\\.gradle\\\\caches\\\\transforms-3\\\\7dfa46b8761dd3e028be6619af127af6\\\\transformed\\\\hermes-android-0.73.6-debug\\\\prefab\"\n",
     "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
     "tag_": "debug|arm64-v8a",
     "diagnosticCode_": 0,
@@ -53,7 +53,7 @@
   },
   {
     "level_": 0,
-    "message_": "  - C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\.cxx\\Debug\\c5v2e2y2\\arm64-v8a\\compile_commands.json (LAST_MODIFIED_CHANGED)",
+    "message_": "removing stale contents from \u0027C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\.cxx\\Debug\\c5v2e2y2\\arm64-v8a\u0027",
     "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
     "tag_": "debug|arm64-v8a",
     "diagnosticCode_": 0,
@@ -66,20 +66,7 @@
   },
   {
     "level_": 0,
-    "message_": "@echo off\n\"C:\\\\Users\\\\USER\\\\Downloads\\\\jdk-17\\\\bin\\\\java\" ^\n  --class-path ^\n  \"C:\\\\Users\\\\USER\\\\.gradle\\\\caches\\\\modules-2\\\\files-2.1\\\\com.google.prefab\\\\cli\\\\2.0.0\\\\f2702b5ca13df54e3ca92f29d6b403fb6285d8df\\\\cli-2.0.0-all.jar\" ^\n  com.google.prefab.cli.AppKt ^\n  --build-system ^\n  cmake ^\n  --platform ^\n  android ^\n  --abi ^\n  arm64-v8a ^\n  --os-version ^\n  21 ^\n  --stl ^\n  c++_shared ^\n  --ndk-version ^\n  25 ^\n  --output ^\n  \"C:\\\\Users\\\\USER\\\\AppData\\\\Local\\\\Temp\\\\agp-prefab-staging10744811992946366630\\\\staged-cli-output\" ^\n  \"C:\\\\Users\\\\USER\\\\.gradle\\\\caches\\\\transforms-3\\\\5b789ef7ea45c686446e5c33060c2106\\\\transformed\\\\react-android-0.73.6-debug\\\\prefab\" ^\n  \"C:\\\\Users\\\\USER\\\\.gradle\\\\caches\\\\transforms-3\\\\d4c4bf10f667029bf1e5f957a4033a7f\\\\transformed\\\\fbjni-0.5.1\\\\prefab\" ^\n  \"C:\\\\Users\\\\USER\\\\.gradle\\\\caches\\\\transforms-3\\\\7dfa46b8761dd3e028be6619af127af6\\\\transformed\\\\hermes-android-0.73.6-debug\\\\prefab\"\n",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "keeping json folder \u0027C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\.cxx\\Debug\\c5v2e2y2\\arm64-v8a\u0027 but regenerating project",
+    "message_": "created folder \u0027C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\.cxx\\Debug\\c5v2e2y2\\arm64-v8a\u0027",
     "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
     "tag_": "debug|arm64-v8a",
     "diagnosticCode_": 0,
@@ -144,293 +131,7 @@
   },
   {
     "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libc++_shared.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libfabricjni.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libfbjni.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libfolly_runtime.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libglog.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libjsi.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_codegen_rncore.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_debug.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_nativemodule_core.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_newarchdefaults.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_render_componentregistry.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_render_core.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_render_debug.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_render_graphics.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_render_imagemanager.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_render_mapbuffer.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libreact_utils.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\librrc_image.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\librrc_legacyviewmanagerinterop.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\librrc_view.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libruntimeexecutor.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libturbomodulejsijni.so in incremental regenerate",
-    "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
-    "tag_": "debug|arm64-v8a",
-    "diagnosticCode_": 0,
-    "memoizedIsInitialized": 1,
-    "unknownFields": {
-      "fields": {}
-    },
-    "memoizedSize": -1,
-    "memoizedHashCode": 0
-  },
-  {
-    "level_": 0,
-    "message_": "deleted unexpected build output C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\build\\intermediates\\cxx\\Debug\\c5v2e2y2\\obj\\arm64-v8a\\libyoga.so in incremental regenerate",
+    "message_": "hard linked C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\.cxx\\Debug\\c5v2e2y2\\arm64-v8a\\compile_commands.json to C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\android\\app\\.cxx\\tools\\debug\\arm64-v8a\\compile_commands.json",
     "file_": "C:\\Users\\USER\\Desktop\\didim\\crewbe-interview-android\\node_modules\\react-native\\ReactAndroid\\cmake-utils\\default-app-setup\\CMakeLists.txt",
     "tag_": "debug|arm64-v8a",
     "diagnosticCode_": 0,

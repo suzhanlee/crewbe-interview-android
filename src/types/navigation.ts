@@ -3,7 +3,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
   UserNameInput: undefined;
-  MainTabs: NavigatorScreenParams<MainTabParamList>;
+  MainTabs: NavigatorScreenParams<MainTabParamList> | undefined;
 };
 
 export type MainTabParamList = {
