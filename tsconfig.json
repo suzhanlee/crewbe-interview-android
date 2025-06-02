@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -22,3 +23,8 @@
     "jest.config.js"
   ]
 } 
+=======
+    "strict": false
+  }
+}
+>>>>>>> 122eaf797253677b196dc157cff472f7f03d22cb
