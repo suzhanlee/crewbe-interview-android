@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert, Platform, ActivityIndi
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
 import { COLORS } from '../../constants';
 import Button from '../../components/common/Button';
-import { api } from '../../api';
+import { api, interviewAPI } from '../../api';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import type { MockInterviewScreenNavigationProp } from '../../types/navigation';
 import { BaseAirline, getRandomQuestion, AIRLINES } from '../../models/Airline';
@@ -66,33 +66,49 @@ const MockInterviewScreen = () => {
   const { username } = useUser();
   const [currentFeedback, setCurrentFeedback] = useState<FeedbackDetail | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState<string>('');
+  const [uploadProgress, setUploadProgress] = useState<string>('');
+  const [recordedVideoUri, setRecordedVideoUri] = useState<string | null>(null);
+  const [analysisJobId, setAnalysisJobId] = useState<string | null>(null);
 
   // 웹 환경에서만 녹화 훅 사용
   const webRecorder = Platform.OS === 'web' && useRecorder ? useRecorder() : null;
 
   useEffect(() => {
     checkCameraAvailability();
+    console.log('🎬 [MockInterview] 화면 초기화');
   }, []);
 
   // 화면이 포커스를 받을 때마다 상태 초기화
   useFocusEffect(
     React.useCallback(() => {
+      console.log('🎬 [MockInterview] 화면 포커스, 상태 초기화');
       resetInterviewState();
     }, [])
   );
 
   const checkCameraAvailability = async () => {
+    console.log('🎬 [MockInterview] 카메라 가용성 확인 시작');
     if (Platform.OS === 'web') {
       try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        const hasVideoDevice = devices.some(device => device.kind === 'videoinput');
-        setHasCamera(hasVideoDevice);
+        // 웹 환경에서만 navigator 접근
+        const globalThis = global as any;
+        if (globalThis.navigator && globalThis.navigator.mediaDevices) {
+          const devices = await globalThis.navigator.mediaDevices.enumerateDevices();
+          const hasVideoDevice = devices.some((device: any) => device.kind === 'videoinput');
+          console.log('🎬 [MockInterview] 웹 카메라 확인:', { hasVideoDevice, devices: devices.length });
+          setHasCamera(hasVideoDevice);
+        } else {
+          console.warn('💥 [MockInterview] 웹 환경이지만 mediaDevices API 미지원');
+          setHasCamera(false);
+        }
       } catch (err) {
-        console.warn('카메라 확인 실패:', err);
+        console.warn('💥 [MockInterview] 카메라 확인 실패:', err);
         setHasCamera(false);
       }
     } else if (Platform.OS === 'android') {
+      console.log('🎬 [MockInterview] 안드로이드 카메라 권한 확인');
       if (!permission?.granted) {
+        console.log('🎬 [MockInterview] 카메라 권한 요청');
         await requestPermission();
       }
     }
@@ -100,6 +116,7 @@ const MockInterviewScreen = () => {
 
   // 타이머 시작 함수
   const startTimer = () => {
+    console.log('⏱️ [MockInterview] 타이머 시작');
     const interval = setInterval(() => {
       setTimer((prev) => prev + 1);
     }, 1000);
@@ -108,6 +125,7 @@ const MockInterviewScreen = () => {
 
   // 타이머 정지 함수
   const stopTimer = () => {
+    console.log('⏱️ [MockInterview] 타이머 정지');
     if (timerInterval) {
       clearInterval(timerInterval);
       setTimerInterval(null);
@@ -121,28 +139,219 @@ const MockInterviewScreen = () => {
     return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
+  // 실제 면접 처리 함수 (백엔드 연동)
+  const processInterviewWithBackend = async (videoFile: any) => {
+    try {
+      console.log('🎬 [MockInterview] 백엔드 면접 처리 시작');
+      setUploadProgress('Pre-signed URL 생성 중...');
+      
+      // 1. Pre-signed URL 요청
+      const fileName = `interview_${Date.now()}_${username}.webm`;
+      const presignedData = await interviewAPI.getPresignedUrl(fileName, 'video/webm');
+      
+      console.log('✅ [MockInterview] Pre-signed URL 생성 성공');
+      console.log('✅ [MockInterview] S3 키:', presignedData.s3Key);
+      console.log('✅ [MockInterview] 버킷:', presignedData.bucket);
+      setUploadProgress('S3에 비디오 업로드 중...');
+      
+      // 2. S3에 파일 업로드
+      await interviewAPI.uploadFile(videoFile, presignedData.uploadUrl);
+      
+      console.log('✅ [MockInterview] S3 업로드 성공');
+      setUploadProgress('업로드 완료, 분석 시작 중...');
+      
+      // 3. 업로드 상태 확인
+      const uploadStatus = await interviewAPI.getUploadStatus(presignedData.s3Key);
+      console.log('✅ [MockInterview] 업로드 상태 확인:', uploadStatus);
+      
+      if (!uploadStatus.exists) {
+        throw new Error('파일 업로드가 완료되지 않았습니다');
+      }
+      
+      setUploadProgress('면접 분석 시작 중...');
+      
+      // 4. 분석 시작
+      const analysisResponse = await interviewAPI.startAnalysis(presignedData.s3Key, presignedData.bucket);
+      const analysisJobs = analysisResponse.jobId; // 실제로는 복합 작업 ID들
+      
+      console.log('✅ [MockInterview] 분석 시작 성공:', analysisJobs);
+      setUploadProgress('분석 중...');
+      
+      // 5. 분석 상태 폴링
+      const pollAnalysis = async () => {
+        try {
+          console.log('🔄 [MockInterview] 분석 상태 확인 시작');
+          
+          // 모든 분석 작업 상태 확인
+          const statusResponse = await interviewAPI.getAllAnalysisStatus(analysisJobs);
+          console.log('🔄 [MockInterview] 모든 분석 상태:', statusResponse.results);
+          
+          const { stt, face, segment } = statusResponse.results;
+          
+          // 모든 작업이 완료되었는지 확인
+          const allCompleted = 
+            stt?.status === 'COMPLETED' && 
+            face?.status === 'SUCCEEDED' && 
+            segment?.status === 'SUCCEEDED';
+          
+          const anyFailed = 
+            stt?.status === 'FAILED' || 
+            face?.status === 'FAILED' || 
+            segment?.status === 'FAILED';
+          
+          if (allCompleted) {
+            console.log('✅ [MockInterview] 모든 분석 완료, 결과 생성 중...');
+            setUploadProgress('분석 완료, 결과 생성 중...');
+            
+            // 6. 분석 결과 요약 생성
+            const resultResponse = await interviewAPI.getAnalysisResult(analysisJobs);
+            console.log('✅ [MockInterview] 분석 결과 수신:', resultResponse);
+            
+            // 백엔드 결과를 FeedbackDetail 형태로 변환
+            const backendFeedback: FeedbackDetail = {
+              candidateName: username,
+              airline: selectedAirline?.name || '항공사',
+              position: '승무원',
+              interviewDate: new Date().toLocaleDateString('ko-KR'),
+              version: 'v2.0',
+              totalScore: resultResponse.overall_score || 85,
+              grade: getGradeFromScore(resultResponse.overall_score || 85),
+              overallEvaluation: generateOverallEvaluation(resultResponse),
+              detailedScores: {
+                voiceAccuracy: resultResponse.speech_analysis?.clarity || 88,
+                expression: resultResponse.facial_analysis?.confidence || 82,
+                speechPattern: resultResponse.speech_analysis?.pace || 85,
+                answerQuality: resultResponse.speech_analysis?.volume || 87
+              },
+              voiceAnalysis: `음성 명확도: ${resultResponse.speech_analysis?.clarity || 88}점`,
+              expressionAnalysis: `표정 자신감: ${resultResponse.facial_analysis?.confidence || 82}점`,
+              speechAnalysis: `말하기 속도: ${resultResponse.speech_analysis?.pace || 85}점`,
+              answerAnalysis: `답변 품질: ${resultResponse.speech_analysis?.volume || 87}점`,
+              detailedFeedback: {
+                voiceAccuracyDetail: '발음과 억양이 자연스럽고 청취하기 용이합니다.',
+                expressionDetail: '표정이 밝고 긍정적이며 면접관과의 소통 의지가 잘 드러납니다.',
+                speechPatternDetail: '말의 속도와 강약이 적절하며 듣기 편안합니다.',
+                answerQualityDetail: '질문의 핵심을 파악하고 체계적으로 답변했습니다.'
+              },
+              improvements: resultResponse.recommendations || [
+                '좀 더 자신감 있는 목소리 톤 연습',
+                '구체적인 사례 제시',
+                '간결한 답변 구성'
+              ],
+              recommendedActions: resultResponse.recommendations || [
+                '발성 연습을 통한 목소리 개선',
+                '모의면접 반복 연습',
+                '업계 지식 보완'
+              ]
+            };
+            
+            console.log('🎉 [MockInterview] 면접 분석 완료!');
+            setCurrentFeedback(backendFeedback);
+            setIsAnalyzing(false);
+            setUploadProgress('');
+            
+          } else if (anyFailed) {
+            console.error('💥 [MockInterview] 일부 분석 작업 실패');
+            throw new Error('분석 작업 중 일부가 실패했습니다');
+          } else {
+            // 아직 처리 중이면 5초 후 재시도
+            console.log('⏳ [MockInterview] 분석 진행 중, 5초 후 재확인');
+            setUploadProgress(`분석 중... (STT: ${stt?.status}, Face: ${face?.status}, Segment: ${segment?.status})`);
+            setTimeout(pollAnalysis, 5000);
+          }
+        } catch (error) {
+          console.error('💥 [MockInterview] 분석 상태 확인 실패:', error);
+          throw error;
+        }
+      };
+      
+      // 폴링 시작 (2초 후)
+      setTimeout(pollAnalysis, 2000);
+      
+    } catch (error) {
+      console.error('💥 [MockInterview] 백엔드 처리 실패:', error);
+      setIsAnalyzing(false);
+      setUploadProgress('');
+      Alert.alert('오류', `면접 분석 중 오류가 발생했습니다: ${error.message}`);
+      
+      // 실패 시 더미 데이터로 대체
+      const feedback = getRandomFeedback(selectedAirline?.name || '', username);
+      setCurrentFeedback(feedback);
+    }
+  };
+
+  // 점수에 따른 등급 계산
+  const getGradeFromScore = (score: number): string => {
+    if (score >= 95) return 'A+';
+    if (score >= 90) return 'A';
+    if (score >= 85) return 'B+';
+    if (score >= 80) return 'B';
+    if (score >= 75) return 'C+';
+    if (score >= 70) return 'C';
+    return 'D';
+  };
+
+  // 종합 평가 생성
+  const generateOverallEvaluation = (results: any): string => {
+    const score = results.overall_score || 85;
+    if (score >= 90) {
+      return '매우 우수한 면접 성과를 보였습니다. 자신감 있는 태도와 명확한 의사소통이 인상적입니다.';
+    } else if (score >= 80) {
+      return '전반적으로 양호한 면접 성과를 보였습니다. 몇 가지 개선점을 보완하면 더 좋은 결과를 기대할 수 있습니다.';
+    } else if (score >= 70) {
+      return '기본적인 면접 역량을 갖추고 있으나, 추가적인 준비와 연습이 필요합니다.';
+    } else {
+      return '면접 기본기를 더 연습하시고 체계적인 준비가 필요합니다.';
+    }
+  };
+
   const handleInterviewToggle = async () => {
     if (!isInterviewing) {
+      console.log('🎬 [MockInterview] 면접 시작');
       setIsInterviewing(true);
       // 웹에서 녹화 시작
       if (Platform.OS === 'web' && webRecorder) {
+        console.log('🎬 [MockInterview] 웹 녹화 시작');
         await webRecorder.start();
       }
     } else {
+      console.log('🎬 [MockInterview] 면접 종료 및 분석 시작');
       stopTimer();
       setIsInterviewing(false);
       setIsAnalyzing(true);
+      setUploadProgress('녹화 완료, 처리 중...');
       
       // 웹에서 녹화 중단 및 업로드
       if (Platform.OS === 'web' && webRecorder) {
-        await webRecorder.stop();
+        console.log('🎬 [MockInterview] 웹 녹화 중단 및 처리');
+        const recordedBlob = await webRecorder.stop();
+        
+        if (recordedBlob) {
+          console.log('🎬 [MockInterview] 녹화된 비디오 처리 시작:', {
+            size: recordedBlob.size,
+            type: recordedBlob.type
+          });
+          
+          // 실제 백엔드 처리
+          await processInterviewWithBackend(recordedBlob);
+        } else {
+          console.warn('⚠️ [MockInterview] 녹화된 비디오가 없음, 더미 데이터 사용');
+          // 녹화 실패 시 더미 데이터로 대체
+          setTimeout(() => {
+            const feedback = getRandomFeedback(selectedAirline?.name || '', username);
+            setCurrentFeedback(feedback);
+            setIsAnalyzing(false);
+          }, 3000);
+        }
+      } else {
+        console.log('🎬 [MockInterview] 네이티브 환경 또는 녹화 기능 없음, 더미 데이터 사용');
+        // 네이티브 환경에서는 일단 더미로 처리
+        setTimeout(() => {
+          const feedback = getRandomFeedback(selectedAirline?.name || '', username);
+          setCurrentFeedback(feedback);
+          setIsAnalyzing(false);
+        }, 3000);
       }
-      
-      setTimeout(() => {
-        const feedback = getRandomFeedback(selectedAirline?.name || '', username);
-        setCurrentFeedback(feedback);
-        setIsAnalyzing(false);
-      }, 3000);
     }
   };
 
@@ -226,6 +435,12 @@ const MockInterviewScreen = () => {
       <View style={styles.container}>
         <ActivityIndicator size="large" color={COLORS.primary} />
         <Text style={styles.loadingText}>분석중입니다...</Text>
+        {uploadProgress && (
+          <Text style={styles.progressText}>{uploadProgress}</Text>
+        )}
+        {analysisJobId && (
+          <Text style={styles.jobIdText}>분석 ID: {analysisJobId}</Text>
+        )}
       </View>
     );
   }
@@ -721,6 +936,16 @@ const styles = StyleSheet.create({
     fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
     color: COLORS.text,
     lineHeight: 16,
+  },
+  progressText: {
+    marginTop: 20,
+    fontSize: 18,
+    color: COLORS.text,
+  },
+  jobIdText: {
+    marginTop: 20,
+    fontSize: 18,
+    color: COLORS.text,
   },
 });
 
