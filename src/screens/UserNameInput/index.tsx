@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
-import { COLORS } from '../../utils/constants';
+import { COLORS } from '../../constants';
 import Button from '../../components/common/Button';
 import { useUser } from '../../contexts/UserContext';
 import { useNavigation } from '@react-navigation/native';

@@ -1,10 +1,5 @@
 <resources>
-<<<<<<< HEAD
-    <string name="app_name">승무원 준비생 앱</string>
-</resources>
-=======
   <string name="app_name">승무원 준비생 앱</string>
   <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
   <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
 </resources>
->>>>>>> 122eaf797253677b196dc157cff472f7f03d22cb

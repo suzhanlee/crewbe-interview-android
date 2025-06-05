@@ -7,6 +7,7 @@ export default {
     version: "1.0.0",
     orientation: "portrait",
     userInterfaceStyle: "light",
+    scheme: "crewbe-app",
     splash: {
       resizeMode: "contain",
       backgroundColor: "#ffffff"
@@ -15,7 +16,8 @@ export default {
       "**/*"
     ],
     ios: {
-      supportsTablet: true
+      supportsTablet: true,
+      bundleIdentifier: "com.suzhanlee.flightattendantapp"
     },
     android: {
       permissions: [

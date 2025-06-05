@@ -1,15 +1,15 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-<<<<<<< HEAD
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
-    "jsx": "react-native",
+    "jsx": "react-jsx",
     "lib": ["es2017"],
     "moduleResolution": "node",
     "noEmit": true,
-    "strict": true,
+    "strict": false,
     "target": "esnext",
     "baseUrl": ".",
     "paths": {
@@ -23,8 +23,3 @@
     "jest.config.js"
   ]
 } 
-=======
-    "strict": false
-  }
-}
->>>>>>> 122eaf797253677b196dc157cff472f7f03d22cb

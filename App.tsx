@@ -2,17 +2,13 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-<<<<<<< HEAD
-import { Text } from 'react-native';
-
-=======
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from './src/constants';
->>>>>>> 122eaf797253677b196dc157cff472f7f03d22cb
 import { RootStackParamList, MainTabParamList } from './src/types/navigation';
 import { ScheduleProvider } from './src/contexts/ScheduleContext';
 import { UserProvider } from './src/contexts/UserContext';
+import { InterviewProvider } from './src/contexts/InterviewContext';
 
 // Import screens
 import UserNameInputScreen from './src/screens/UserNameInput';
@@ -27,21 +23,37 @@ const Tab = createBottomTabNavigator<MainTabParamList>();
 const MainTabs = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
-        tabBarStyle: {
-          backgroundColor: '#fff',
-          borderTopWidth: 1,
-          borderTopColor: '#e0e0e0',
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName: keyof typeof Ionicons.glyphMap;
+
+          if (route.name === 'Home') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Schedule') {
+            iconName = focused ? 'calendar' : 'calendar-outline';
+          } else if (route.name === 'MockInterview') {
+            iconName = focused ? 'mic' : 'mic-outline';
+          } else if (route.name === 'Profile') {
+            iconName = focused ? 'person' : 'person-outline';
+          } else {
+            iconName = 'help-outline';
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#007AFF',
-        tabBarInactiveTintColor: '#8E8E93',
-      }}>
+        tabBarActiveTintColor: COLORS.primary,
+        tabBarInactiveTintColor: COLORS.gray,
+        tabBarStyle: {
+          backgroundColor: COLORS.white,
+          borderTopWidth: 1,
+          borderTopColor: COLORS.lightGray,
+        },
+      })}>
       <Tab.Screen 
         name="Home" 
         component={HomeScreen}
         options={{
           title: '홈',
-          tabBarIcon: () => <Text>🏠</Text>,
           headerShown: false,
         }}
       />
@@ -50,7 +62,6 @@ const MainTabs = () => {
         component={ScheduleScreen}
         options={{
           title: '일정 관리',
-          tabBarIcon: () => <Text>📅</Text>,
         }}
       />
       <Tab.Screen 
@@ -58,7 +69,6 @@ const MainTabs = () => {
         component={MockInterviewScreen}
         options={{
           title: '모의 면접',
-          tabBarIcon: () => <Text>🎤</Text>,
         }}
       />
       <Tab.Screen 
@@ -66,7 +76,6 @@ const MainTabs = () => {
         component={ProfileScreen}
         options={{
           title: '프로필',
-          tabBarIcon: () => <Text>👤</Text>,
         }}
       />
     </Tab.Navigator>
@@ -77,20 +86,23 @@ function App(): React.ReactElement {
   return (
     <UserProvider>
       <ScheduleProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="UserNameInput">
-            <Stack.Screen 
-              name="UserNameInput" 
-              component={UserNameInputScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen 
-              name="MainTabs" 
-              component={MainTabs}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <InterviewProvider>
+          <StatusBar style="dark" backgroundColor={COLORS.white} />
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="UserNameInput">
+              <Stack.Screen 
+                name="UserNameInput" 
+                component={UserNameInputScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen 
+                name="MainTabs" 
+                component={MainTabs}
+                options={{ headerShown: false }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </InterviewProvider>
       </ScheduleProvider>
     </UserProvider>
   );
